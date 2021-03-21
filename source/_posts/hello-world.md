@@ -3,8 +3,6 @@ title: Hello World
 tags:
 - Foo
 - Bar
-categories
-- Baz
 ---
 The first blog.
 
