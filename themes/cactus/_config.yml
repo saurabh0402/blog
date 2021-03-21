@@ -10,17 +10,16 @@ direction: ltr
 # languages/*.yml
 nav:
   home: /
-  about: /about/
-  articles: /archives/
-  projects: https://github.com/saurabh0402
-
+  # about: /about/
+  # articles: /archives/
+  Website: https://saurabh0402.github.io
 
 # Links to your social media accounts.
 # The keys should correspond to Fontawesome icon names
 # (see https://fontawesome.com/icons?d=gallery&s=brands);
 # only 'mail' is an exception.
 social_links:
-  github: http://github.com/probberechts/cactus-dark
+  github: http://github.com/saurabh0402
   linkedin: https://linkedin.com/in/saurabh0402
   mail: mailto:saurabh.k0402@gmail.com
 
@@ -34,7 +33,7 @@ tags_overview: false
 #   - post_count: whether to show only the x most recent posts.
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
-  show_all_posts: false
+  show_all_posts: true
   post_count: 10
   sort_updated: false
 
@@ -100,7 +99,7 @@ favicon:
 
 # The color scheme that should be used to highlight codeblocks.
 # See source/css/_highlight for a list of all available color schemes.
-# highlight: rainbow
+highlight: monokai-sublime
 
 # Set the color scheme.
 # Available color schemes are 'dark', 'light', 'classic' and 'white'.
