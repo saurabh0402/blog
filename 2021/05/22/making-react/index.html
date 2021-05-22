@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Creating something is a great way to understand it.Recently, I created a tiny clone of React which I called reflex. Though it only has the most basic features that React provide, it was a great exerci">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Making a tiny React clone - 1">
+<meta property="og:url" content="http://example.com/2021/05/22/making-react/index.html">
+<meta property="og:site_name" content="Saurabh Kumar">
+<meta property="og:description" content="Creating something is a great way to understand it.Recently, I created a tiny clone of React which I called reflex. Though it only has the most basic features that React provide, it was a great exerci">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-22T14:48:27.070Z">
+<meta property="article:modified_time" content="2021-05-22T14:48:27.070Z">
+<meta property="article:author" content="Saurabh Kumar">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Build-my-own-x">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blog/images/logo.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blog/images/logo.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/logo.png">
+        
+      
+    
+    <!-- title -->
+    <title>Making a tiny React clone - 1</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/blog/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://saurabhk.online">Website</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/blog/2021/05/22/hello-world/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <!-- <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li> -->
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/05/22/making-react/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/05/22/making-react/&text=Making a tiny React clone - 1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/05/22/making-react/&is_video=false&description=Making a tiny React clone - 1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Making a tiny React clone - 1&body=Check out this article: http://example.com/2021/05/22/making-react/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/05/22/making-react/&name=Making a tiny React clone - 1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/05/22/making-react/&t=Making a tiny React clone - 1"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Making a tiny React clone - 1
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Saurabh Kumar</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-05-22T14:48:27.070Z" itemprop="datePublished">2021-05-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/blog/tags/Build-my-own-x/" rel="tag">Build-my-own-x</a>, <a class="tag-link-link" href="/blog/tags/React/" rel="tag">React</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><em><strong>Creating something is a great way to understand it.</strong></em><br>Recently, I created a tiny clone of React which I called <a target="_blank" rel="noopener" href="https://github.com/saurabh0402/build-my-own-x/tree/main/react"><em><strong>reflex</strong></em></a>. Though it only has the most basic features that React provide, it was a great exercise to learn the internals of React and in the way, there are a lot of things that I learnt. Through this series of blog posts, I will try to jot down everything I learnt along the way.</p>
+<p>Credits where due, I followed this beautiful article <a target="_blank" rel="noopener" href="https://pomb.us/build-your-own-react/">here</a> 👏 and these blogs will be a derivative of it only with my learnings sprinkled along the way. At the end of these, you should have a simple React clone of yourself.</p>
+<p>Before we hop onto the coding train and crate our own React, let’s first get a few terminologies out of the way:</p>
+<ul>
+<li><strong>Virtual DOM</strong>: This is the concept of representing the DOM or Document Object Model “virtually” in memory (mostly as objects). When we work with React components we actually work with this abstraction and don’t usually work directly with the underlying DOM. As we will see later on, we represent the DOM “virtually” using objects.<br><br></li>
+<li><strong>Fibers</strong>: These are internal objects which (we will see) is a superset of React components. These objects are an internal representation of the components and are used to add things to the DOM. We will take a very detailed look at what all data these objects contain and their role in rendering later.</li>
+</ul>
+<p>Now let’s see what happens when we create a simple app in React</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = (</span><br><span class="line">  &lt;div className=<span class="string">&quot;hello&quot;</span>&gt;Hello World&lt;/div&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">render(App, <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#root));</span></span><br></pre></td></tr></table></figure>
+<p>So, the HTML embedded in JS is what we call JSX. That is not supported by the browser natively and therefore that will firstly be transpiled into normal JS which is usually done through Babel. Once this is transpiled through babel, we get the following result</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = React.createElement(<span class="string">&#x27;div&#x27;</span>, &#123; <span class="attr">className</span>: <span class="string">&quot;hello&quot;</span> &#125;, <span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line"></span><br><span class="line">render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#root));</span></span><br></pre></td></tr></table></figure>
+<p><code>React.createElement</code> is a function that we will soon be implementing but it takes 3 or more arguments - the type of element to create, the props or properties, and the children and it returns nothing but an object - the object representing our <code>App</code> component in the virtual DOM. The object for the <code>App</code> in this case would be somewhat like this</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  type: <span class="string">&#x27;div&#x27;</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: <span class="string">&#x27;hello&#x27;</span>,</span><br><span class="line">    children: [</span><br><span class="line">      <span class="string">&#x27;Hello World&#x27;</span>,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Our example is pretty simple and therefore the final object formed is simple but we can pass in other components as a child as well, also we can have more than 1 children and therefore this object can become pretty complicated. So, that’s our element.</p>
+<p>The <code>render(App, document.querySelector(&#39;#root));</code> is what converts the virtual DOM created in the previous step to the actual DOM. (We will see that this not 100% complete 🙈). We will take a look at this later but first, let’s see how we can write this <code>createElement</code> function. </p>
+<hr>
+<p>A tiny note before we write the <code>createElement</code> function. We saw that babel transpiled the JSX to <code>React.createElement</code> calls but we can actually tell babel to transpile it to something like <code>Reflex.createElement</code> by simply adding a comment like this before the JSX</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@jsx </span>reflex.createElement */</span></span><br><span class="line"><span class="keyword">const</span> App = (</span><br><span class="line">  &lt;div className=<span class="string">&quot;hello&quot;</span>&gt;Hello World&lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>When this is transpiled, it will get converted to </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = Reflex.createElement(<span class="string">&#x27;div&#x27;</span>, &#123; <span class="attr">className</span>: <span class="string">&quot;hello&quot;</span> &#125;, <span class="string">&#x27;Hello World&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Okay, no more delay, let’s implement the <code>createElement</code> function now. Here’s the code that should be put inside the <code>reflex.js</code> file.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createTextElement</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: <span class="string">&#x27;TEXT&#x27;</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">      nodeValue: text,</span><br><span class="line">      children: [],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">type, props, ...children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type,</span><br><span class="line">    props: &#123;</span><br><span class="line">      ...props,</span><br><span class="line">      children: children.map(<span class="function">(<span class="params">child</span>) =&gt;</span></span><br><span class="line">        <span class="keyword">typeof</span> child === <span class="string">&#x27;object&#x27;</span> ? child : createTextElement(child)</span><br><span class="line">      ),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So, I promised one but created two functions. Believe me, they are important. Let me explain.</p>
+<p>Let’s start with <code>createElement</code>, it’s simple enough. The first argument is <code>type</code> and the second object is the <code>props</code> object as we saw in the react examples. Then, it collects all other arguments inside the <code>children</code> array. Next, it returns the object representing this element which has the <code>type</code> property assigned as-is. All the props along with the <code>children</code> are assigned to the <code>props</code> key (this is as per React behaviour, the <code>children</code> is also considered a prop). But the <code>children</code> object is changed a bit before saving.</p>
+<p>To understand this we need to remember that the children can be two things:</p>
+<ul>
+<li>Other elements, in which case they will be objects generated through nested <code>createElement</code> calls. We simply append them to the children array.</li>
+<li>Text, in which case we are calling the <code>createTextElement</code> function and append the returned value.</li>
+</ul>
+<p>So, what we actually do is that for texts, we create a special element using the <code>createTextElement</code> function. We do this to have a somewhat consistent behaviour for text and other types of elements.</p>
+<hr>
+<p>Let’s see this in action. To actually test this, we need to do some setup. Create a folder called <code>example</code>.<br>Inside the <code>example</code> folder create a new file called <code>babel.config.js</code> with the following content</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;presets&quot;</span>: [</span><br><span class="line">    [<span class="string">&quot;@babel/env&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;@babel/react&quot;</span>]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Next, create a new file <code>index.jsx</code> with following content</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reflex = <span class="built_in">require</span>(<span class="string">&#x27;../reflex&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** <span class="doctag">@jsx </span>reflex.createElement */</span></span><br><span class="line"><span class="keyword">const</span> App = (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt; Hello World &lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(App, <span class="literal">null</span>, <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<p>Install required dependencies using the following command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install -D @babel&#x2F;core @babel&#x2F;cli @babel&#x2F;preset-react @babel&#x2F;preset-env</span><br></pre></td></tr></table></figure>
+
+<p>And now, finally, run the following command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx babel index.jsx --our-file build.js</span><br><span class="line">node build.js</span><br></pre></td></tr></table></figure>
+
+<p>You should see an output similar to this</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;type&quot;</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">  <span class="string">&quot;props&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;children&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;props&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;children&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="string">&quot;type&quot;</span>: <span class="string">&quot;TEXT&quot;</span>,</span><br><span class="line">              <span class="string">&quot;props&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;nodeValue&quot;</span>: <span class="string">&quot; Hello World &quot;</span>,</span><br><span class="line">                <span class="string">&quot;children&quot;</span>: []</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>So, one step down. We have created the <code>createElement</code> function but that’s just a beginning. Next, we will be implementing the <code>render</code> function and see how these two fit together.<br>Meet you on that side, until then tada 👋 👋</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://saurabhk.online">Website</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <!-- <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/05/22/making-react/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/05/22/making-react/&text=Making a tiny React clone - 1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/05/22/making-react/&is_video=false&description=Making a tiny React clone - 1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Making a tiny React clone - 1&body=Check out this article: http://example.com/2021/05/22/making-react/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/05/22/making-react/&title=Making a tiny React clone - 1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/05/22/making-react/&name=Making a tiny React clone - 1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/05/22/making-react/&t=Making a tiny React clone - 1"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div> -->
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Saurabh Kumar
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://saurabhk.online">Website</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/blog/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/blog/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/blog/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
