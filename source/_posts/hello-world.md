@@ -4,7 +4,7 @@ tags:
 - Foo
 - Bar
 ---
-The first blog.
+Hello World!
 
 ```js
 (() => {
